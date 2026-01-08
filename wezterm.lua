@@ -39,16 +39,6 @@ local config = {
             key = "k",
             mods = "ALT",
         },
-        -- {
-        --     action = wezterm.action.ActivateTabRelative(-1),
-        --     key = "Tab",
-        --     mods = "CTRL|SHIFT",
-        -- },
-        -- {
-        --     action = wezterm.action.ActivateTabRelative(1),
-        --     key = "Tab",
-        --     mods = "CTRL",
-        -- },
         {
             action = wezterm.action.AdjustPaneSize({ "Down", 10 }),
             key = "DownArrow",
