@@ -3,6 +3,10 @@ local act = wezterm.action
 local mux = wezterm.mux
 
 local config = {
+    set_environment_variables = {
+        XDG_CONFIG_HOME = "C:/dev",
+        XDG_DATA_HOME   = "C:/dev",
+    },
     color_scheme = "Tokyo Night Moon",
     default_prog = { "pwsh" },
     enable_tab_bar = true,
@@ -39,16 +43,6 @@ local config = {
             key = "k",
             mods = "ALT",
         },
-        -- {
-        --     action = wezterm.action.ActivateTabRelative(-1),
-        --     key = "Tab",
-        --     mods = "CTRL|SHIFT",
-        -- },
-        -- {
-        --     action = wezterm.action.ActivateTabRelative(1),
-        --     key = "Tab",
-        --     mods = "CTRL",
-        -- },
         {
             action = wezterm.action.AdjustPaneSize({ "Down", 10 }),
             key = "DownArrow",
@@ -118,19 +112,19 @@ local config = {
 
 -- Tab Swithing by ALT + Num
 for i = 1, 9 do
-  -- ALT + number to activate that tab
-  table.insert(config.keys, {
-    key = tostring(i),
-    mods = 'ALT',
-    action = act.ActivateTab(i - 1),
-  })
+    -- ALT + number to activate that tab
+    table.insert(config.keys, {
+        key = tostring(i),
+        mods = 'ALT',
+        action = act.ActivateTab(i - 1),
+    })
 end
 
 -- Start Maximized
 wezterm.on('gui-startup', function(window)
-  local tab, pane, window = mux.spawn_window(cmd or {})
-  local gui_window = window:gui_window();
-  gui_window:maximize()
+    local tab, pane, window = mux.spawn_window(cmd or {})
+    local gui_window = window:gui_window();
+    gui_window:maximize()
 end)
 
 return config
